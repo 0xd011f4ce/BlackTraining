@@ -15,7 +15,7 @@
         <p class="error">{{ session('error') }}</p>
     @endif
 
-    <form action="#" method="POST">
+    <form method="POST">
         @csrf
         @method('patch')
 
@@ -35,13 +35,16 @@
     <h2>Lessons</h2>
 
     <ul>
-        @foreach ($course_section->lessons as $lesson)
+        @foreach ($course_section->courseLessons as $lesson)
             <li>
                 {{ $lesson->name }}
                 <div style="display: flex; justify-items: center; align-items: center">
-                    <a href="#" class="button">Edit</a>
+                    <a href="{{ route('admin.course.lessons.edit', ['course' => $course, 'course_section' => $course_section, 'course_lesson' => $lesson]) }}"
+                        class="button">Edit</a>
                     &middot;
-                    <form action="/" method="POST">
+                    <form
+                        action="{{ route('admin.course.lessons.delete', ['course' => $course, 'course_section' => $course_section, 'course_lesson' => $lesson]) }}"
+                        method="POST">
                         @csrf
                         @method('delete')
                         <button type="submit"
@@ -54,8 +57,7 @@
 
     <h3>Create Lesson</h3>
 
-    <form
-        action="{{ route('admin.course.sections.lessons.store', ['course' => $course, 'course_section' => $course_section]) }}"
+    <form action="{{ route('admin.course.lessons.store', ['course' => $course, 'course_section' => $course_section]) }}"
         method="POST">
         @csrf
 

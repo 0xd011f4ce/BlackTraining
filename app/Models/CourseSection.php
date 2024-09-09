@@ -21,7 +21,7 @@ class CourseSection extends Model
         return $this->belongsTo(Course::class);
     }
 
-    public function lessons()
+    public function courseLessons()
     {
         return $this->hasMany(CourseLesson::class);
     }

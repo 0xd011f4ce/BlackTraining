@@ -35,5 +35,8 @@ Route::middleware(["auth", "roles:admin"])->group(function () {
     Route::patch("/admin/course/{course:slug}/section/{course_section:slug}", [AdminSectionController::class, "update"])->name("admin.course.sections.update");
     Route::delete("/admin/course/{course:slug}/section/{course_section:slug}", [AdminSectionController::class, "destroy"])->name("admin.course.sections.destroy");
 
-    Route::post("/admin/course/{course:slug}/section/{course_section:slug}/lesson/add", [AdminLessonController::class, "store"])->name("admin.course.sections.lessons.store");
+    Route::post("/admin/course/{course:slug}/section/{course_section:slug}/lesson/add", [AdminLessonController::class, "store"])->name("admin.course.lessons.store");
+    Route::get("/admin/course/{course:slug}/section/{course_section:slug}/lesson/{course_lesson:slug}", [AdminLessonController::class, "edit"])->name("admin.course.lessons.edit");
+    Route::patch("/admin/course/{course:slug}/section/{course_section:slug}/lesson/{course_lesson:slug}", [AdminLessonController::class, "update"])->name("admin.course.lessons.update");
+    Route::delete("/admin/course/{course:slug}/section/{course_section:slug}/lesson/{course_lesson:slug}", [AdminLessonController::class, "delete"])->name("admin.course.lessons.delete");
 });

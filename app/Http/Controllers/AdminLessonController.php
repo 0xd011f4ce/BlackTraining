@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Course;
+use App\Models\CourseLesson;
 use App\Models\CourseSection;
 
 class AdminLessonController extends Controller
@@ -30,5 +31,42 @@ class AdminLessonController extends Controller
         ]);
 
         return back()->with("success", "Lesson created successfully");
+    }
+
+    public function edit(Request $request, Course $course, CourseSection $course_section, CourseLesson $course_lesson)
+    {
+        return view("admin.lessons.edit", [
+            "course" => $course,
+            "section" => $course_section,
+            "lesson" => $course_lesson
+        ]);
+    }
+
+    public function update(Request $request, Course $course, CourseSection $course_section, CourseLesson $course_lesson)
+    {
+        $request->validate([
+            "name" => "required",
+            "content" => "required"
+        ]);
+
+        $course_lesson->name = $request->name;
+        $course_lesson->content = $request->content;
+        $course_lesson->save();
+
+        return redirect()->route("admin.course.lessons.edit", [
+            "course" => $course->slug,
+            "course_section" => $course_section->slug,
+            "course_lesson" => $course_lesson->slug
+        ])->with("success", "Lesson updated successfully");
+    }
+
+    public function delete(Course $course, CourseSection $course_section, CourseLesson $course_lesson)
+    {
+        $course_lesson->delete();
+
+        return redirect()->route("admin.course.sections.edit", [
+            "course" => $course->slug,
+            "course_section" => $course_section->slug
+        ])->with("success", "Lesson deleted successfully");
     }
 }
