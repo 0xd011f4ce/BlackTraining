@@ -62,6 +62,12 @@ class AdminCoursecontroller extends Controller
         $course->name = $request->name;
         $course->description = $request->description;
         $course->duration = $request->duration;
+
+        if ($request->has("published"))
+            $course->published = true;
+        else
+            $course->published = false;
+
         $course->save();
 
         return redirect()->route("admin.course.edit", ["course" => $course->slug])->with("success", "Course updated successfully.");

@@ -8,6 +8,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\AdminCoursecontroller;
 use App\Http\Controllers\AdminLessonController;
 use App\Http\Controllers\AdminSectionController;
+use App\Http\Controllers\LogoutController;
 
 Route::get("/", function () {
     return view("home");
@@ -18,6 +19,7 @@ Route::get('/signup', [SignupController::class, "index"])->name("signup.index");
 Route::post('/signup', [SignupController::class, "store"])->name("signup.store");
 Route::get('/login', [LoginController::class, "index"])->name("login.index");
 Route::post('/login', [LoginController::class, "store"])->name("login.store");
+Route::get("/logout", [LogoutController::class, "index"])->name("logout.index");
 
 // Admin routes
 Route::middleware(["auth", "roles:admin"])->group(function () {

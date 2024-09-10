@@ -42,6 +42,11 @@
             @enderror
         </div>
 
+        <div>
+            <label for="published">Published</label>
+            <input type="checkbox" name="published" {{ $course->published ? 'checked' : '' }}>
+        </div>
+
         <button type="submit" name="submit">Update Information</button>
     </form>
 

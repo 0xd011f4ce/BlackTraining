@@ -35,7 +35,7 @@
             @if ($isadmin)
                 <a href="{{ route('admin.index') }}">Admin</a>
             @endif
-            <a href="#">Logout</a>
+            <a href="{{ route('logout.index') }}">Logout</a>
         @else
             <a href="{{ route('login.index') }}">Login</a>
             <a href="{{ route('signup.index') }}">Sign Up</a>
