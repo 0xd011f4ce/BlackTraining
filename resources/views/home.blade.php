@@ -12,5 +12,5 @@
         otherwise. Create an account to join the community and access all content at no cost.</p>
     <p>Donations are optional but appreciated, as they help cover server costs. You can also support us by contributing to
         the free (as in freedom) code, bookmarking our site, or spreading the word.</p>
-    <p>Disclaimer: We are not responsible for how the information provided here is used.</p>
+    <p><span class="error">Disclaimer</span>: We are not responsible for how the information provided here is used.</p>
 @endsection
