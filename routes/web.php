@@ -49,6 +49,10 @@ Route::middleware(["auth", "roles:admin"])->group(function () {
     Route::delete("/admin/course/{course:slug}/section/{course_section:slug}/lesson/{course_lesson:slug}", [AdminLessonController::class, "delete"])->name("admin.course.lessons.delete");
 
     // pages
-    Route::get("/admin/pages/new", [AdminPageController::class, "index"])->name("admin.pages.new.index");
     Route::post("/admin/pages/new", [AdminPageController::class, "store"])->name("admin.pages.new.store");
+    Route::get("/admin/pages/new", [AdminPageController::class, "index"])->name("admin.pages.new.index");
+    Route::get("/admin/pages/manage", [AdminPageController::class, "show"])->name("admin.pages.show");
+
+    Route::get("/admin/page/{page:slug}", [AdminPageController::class, "edit"])->name("admin.page.edit");
+    Route::post("/admin/page/{page:slug}", [AdminPageController::class, "update"])->name("admin.page.update");
 });

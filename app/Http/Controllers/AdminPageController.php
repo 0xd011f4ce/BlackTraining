@@ -39,4 +39,37 @@ class AdminPageController extends Controller
 
         return back()->with("success", "Page created successfully.");
     }
+
+    public function show()
+    {
+        $pages = Page::all();
+        return view("admin.pages.manage", compact("pages"));
+    }
+
+    public function edit(Page $page)
+    {
+        return view("admin.pages.edit", compact("page"));
+    }
+
+    public function update(Request $request, Page $page)
+    {
+        $request->validate([
+            "name" => "required",
+            "path" => "required",
+            "content" => "required"
+        ]);
+
+        $page->name = $request->name;
+        $page->path = $request->path;
+        $page->content = $request->content;
+
+        if ($request->has("in_header"))
+            $page->in_header = true;
+        else
+            $page->in_header = false;
+
+        $page->save();
+
+        return back()->with("success", "Page updated successfully.");
+    }
 }

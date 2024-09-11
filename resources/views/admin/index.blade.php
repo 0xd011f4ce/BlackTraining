@@ -18,7 +18,7 @@
 
     <h2>Pages</h2>
     <a href="{{ route('admin.pages.new.index') }}">Create new page</a><br>
-    <a href="#">Manage pages</a>
+    <a href="{{ route('admin.pages.show') }}">Manage pages</a>
 
     <br>
 @endsection
