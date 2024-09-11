@@ -25,11 +25,19 @@
         ls<br>
 
         <a href="{{ route('home.index') }}">Home</a>
-        <a href="#">About</a>
         <a href="#">Courses</a>
         <a href="#">Images</a>
-        <a href="#">Donate</a>
         <a href="#">'Source Code'</a>
+
+        @php
+            $pages = App\Models\Page::where('in_header', true)->get();
+        @endphp
+
+        @foreach ($pages as $page)
+            <a href="{{ route('pages.show', ['page' => $page]) }}">
+                {{ $page->name }}
+            </a>
+        @endforeach
 
         @auth
             @if ($isadmin)
