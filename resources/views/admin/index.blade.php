@@ -16,5 +16,9 @@
     <h2>Users</h2>
     <a href="#">Manage users</a><br>
 
+    <h2>Pages</h2>
+    <a href="#">Create new page</a><br>
+    <a href="#">Manage pages</a>
+
     <br>
 @endsection
