@@ -6,7 +6,7 @@
     <a href="{{ route('admin.course.sections.edit', ['course' => $course, 'course_section' => $section]) }}">&leftarrow; Go
         back to: {{ $section->name }}</a>
 
-    <h1>Edit: {{ $section->name }} - {{ $lesson->name }}</h1>
+    <h1>Edit Lesson: {{ $section->name }} - {{ $lesson->name }}</h1>
 
     @if (session('success'))
         <p class="success">{{ session('success') }}</p>

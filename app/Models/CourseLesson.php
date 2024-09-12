@@ -16,4 +16,14 @@ class CourseLesson extends Model
         "course_id",
         "course_section_id",
     ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function section()
+    {
+        return $this->belongsTo(CourseSection::class, "course_section_id");
+    }
 }

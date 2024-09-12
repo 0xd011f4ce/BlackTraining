@@ -3,6 +3,12 @@
 @section('title', $course->name)
 
 @section('content')
+    @auth
+        @if (Auth::user()->role === 'admin')
+            <a href="{{ route('admin.course.edit', ['course' => $course]) }}">Edit course</a>
+        @endif
+    @endauth
+
     <h1>{{ $course->name }}</h1>
     <p>Lessons: {{ count($course->lessons) }}</p>
     <p>Last updated: {{ $course->updated_at->diffForHumans() }}</p>

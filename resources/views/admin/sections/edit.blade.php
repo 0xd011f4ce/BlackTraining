@@ -5,7 +5,7 @@
 @section('content')
     <a href="{{ route('admin.course.edit', ['course' => $course]) }}">&leftarrow; Back to {{ $course->name }}</a>
 
-    <h1>Edit: {{ $course_section->name }}</h1>
+    <h1>Edit Section: {{ $course_section->name }}</h1>
 
     @if (session('success'))
         <p class="success">{{ session('success') }}</p>
