@@ -31,6 +31,8 @@ class AdminSectionController extends Controller
             "course_id" => $course->id,
         ]);
 
+        $course->touch();
+
         return redirect()->route("admin.course.edit", $course->slug)->with("success", "Section created successfully.");
     }
 
@@ -50,12 +52,15 @@ class AdminSectionController extends Controller
         $course_section->description = $request->description;
         $course_section->save();
 
+        $course->touch();
+
         return redirect()->route("admin.course.sections.update", compact("course", "course_section"))->with("success", "Section updated successfully.");
     }
 
     public function destroy(Request $request, Course $course, CourseSection $course_section)
     {
         $course_section->delete();
+        $course->touch();
 
         return redirect()->route("admin.course.edit", $course->slug)->with("success", "Section deleted successfully.");
     }

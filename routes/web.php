@@ -9,8 +9,10 @@ use App\Http\Controllers\AdminCoursecontroller;
 use App\Http\Controllers\AdminLessonController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\AdminSectionController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PageController;
+use App\Models\Course;
 
 Route::get("/", function () {
     return view("home");
@@ -25,6 +27,11 @@ Route::get("/logout", [LogoutController::class, "index"])->name("logout.index");
 
 // pages
 Route::get("/p/{page:path}", [PageController::class, "show"])->name("pages.show");
+
+// courses
+Route::get("/courses", [CourseController::class, "index"])->name("courses.index");
+Route::get("/course/{course:slug}", [CourseController::class, "show"])->name("courses.show");
+Route::get("/course/{course:slug}/lesson/{lesson:slug}", [CourseController::class, "lesson"])->name("courses.lesson");
 
 // Admin routes
 Route::middleware(["auth", "roles:admin"])->group(function () {

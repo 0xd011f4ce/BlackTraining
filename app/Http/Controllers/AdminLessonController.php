@@ -13,7 +13,7 @@ class AdminLessonController extends Controller
     public function store(Request $request, Course $course, CourseSection $course_section)
     {
         $slug = Str::slug($request->lesson_name) . "-section-" . $course_section->id;
-        if ($course_section->lessons()->where("slug", $slug)->exists()) {
+        if ($course_section->courseLessons()->where("slug", $slug)->exists()) {
             return back()->with("error", "A lesson with this name already exists in this section");
         }
 
@@ -22,13 +22,16 @@ class AdminLessonController extends Controller
             "lesson_content" => "required",
         ]);
 
-        $course_section->lessons()->create([
+        $course_section->courseLessons()->create([
             "name" => $request->lesson_name,
             "slug" => $slug,
             "content" => $request->lesson_content,
             "course_id" => $course->id,
             "course_section_id" => $course_section->id,
         ]);
+
+        // update course's updated_at
+        $course->touch();
 
         return back()->with("success", "Lesson created successfully");
     }
@@ -53,6 +56,8 @@ class AdminLessonController extends Controller
         $course_lesson->content = $request->content;
         $course_lesson->save();
 
+        $course->touch();
+
         return redirect()->route("admin.course.lessons.edit", [
             "course" => $course->slug,
             "course_section" => $course_section->slug,
@@ -63,6 +68,8 @@ class AdminLessonController extends Controller
     public function delete(Course $course, CourseSection $course_section, CourseLesson $course_lesson)
     {
         $course_lesson->delete();
+
+        $course->touch();
 
         return redirect()->route("admin.course.sections.edit", [
             "course" => $course->slug,

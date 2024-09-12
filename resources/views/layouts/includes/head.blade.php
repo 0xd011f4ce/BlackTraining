@@ -25,7 +25,7 @@
         ls<br>
 
         <a href="{{ route('home.index') }}">Home</a>
-        <a href="#">Courses</a>
+        <a href="{{ route('courses.index') }}">Courses</a>
         <a href="#">Images</a>
         <a href="#">Forum</a>
         <a href="#">'Source Code'</a>
