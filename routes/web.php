@@ -62,9 +62,14 @@ Route::middleware(["auth", "roles:admin"])->group(function () {
     Route::get("/admin/pages/manage", [AdminPageController::class, "show"])->name("admin.pages.show");
 
     Route::get("/admin/page/{page:slug}", [AdminPageController::class, "edit"])->name("admin.page.edit");
-    Route::post("/admin/page/{page:slug}", [AdminPageController::class, "update"])->name("admin.page.update");
+    Route::patch("/admin/page/{page:slug}", [AdminPageController::class, "update"])->name("admin.page.update");
 
     // image board
     Route::post("/admin/boards/new", [AdminImageBoardController::class, "store"])->name("admin.boards.new.store");
     Route::get("/admin/boards/new", [AdminImageBoardController::class, "index"])->name("admin.boards.new.index");
+    Route::get("/admin/boards/manage", [AdminImageBoardController::class, "show"])->name("admin.boards.show");
+
+    Route::get("/admin/board/{board:identifier}", [AdminImageBoardController::class, "edit"])->name("admin.board.edit");
+    Route::patch("/admin/board/{board:identifier}", [AdminImageBoardController::class, "update"])->name("admin.board.update");
+    Route::delete("/admin/board/{board:identifier}", [AdminImageBoardController::class, "delete"])->name("admin.board.delete");
 });

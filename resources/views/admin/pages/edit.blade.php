@@ -10,6 +10,7 @@
 
     <form action="{{ route('admin.page.update', ['page' => $page]) }}" method="POST">
         @csrf
+        @method('patch')
 
         <div>
             <label for="name">Name</label>

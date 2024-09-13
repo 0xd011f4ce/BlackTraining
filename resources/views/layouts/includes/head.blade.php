@@ -28,7 +28,6 @@
         <a href="{{ route('courses.index') }}">Courses</a>
         <a href="#">Images</a>
         <a href="#">Forum</a>
-        <a href="#">'Source Code'</a>
 
         @php
             $pages = App\Models\Page::where('in_header', true)->get();

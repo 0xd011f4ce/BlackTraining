@@ -3,8 +3,7 @@
 @section('title', 'Manage Courses')
 
 @section('content')
-    <h1>
-        Manage Courses</h1>
+    <h1>Manage Courses</h1>
 
     <ul>
         @foreach ($courses as $course)

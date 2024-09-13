@@ -11,16 +11,13 @@
     <a href="{{ route('admin.courses.new.index') }}">Create new course</a><br>
     <a href="{{ route('admin.courses.show') }}">Manage courses</a>
 
-    <h2>Users</h2>
-    <a href="#">Manage users</a><br>
-
     <h2>Pages</h2>
     <a href="{{ route('admin.pages.new.index') }}">Create new page</a><br>
     <a href="{{ route('admin.pages.show') }}">Manage pages</a>
 
     <h2>Image Boards</h2>
     <a href="{{ route('admin.boards.new.index') }}">Create new Board</a><br>
-    <a href="#">Manage Boards</a>
+    <a href="{{ route('admin.boards.show') }}">Manage Boards</a>
 
     <br>
 @endsection
