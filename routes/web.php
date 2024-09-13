@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminLessonController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\AdminSectionController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ImageBoardController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PageController;
 use App\Models\Course;
@@ -33,6 +34,10 @@ Route::get("/p/{page:path}", [PageController::class, "show"])->name("pages.show"
 Route::get("/courses", [CourseController::class, "index"])->name("courses.index");
 Route::get("/course/{course:slug}", [CourseController::class, "show"])->name("courses.show");
 Route::get("/course/{course:slug}/lesson/{lesson:slug}", [CourseController::class, "lesson"])->name("courses.lesson");
+
+// imade boards
+Route::get("/boards", [ImageBoardController::class, "index"])->name("boards.index");
+Route::get("/boards/{board:identifier}", [ImageBoardController::class, "show"])->name("boards.show");
 
 // Admin routes
 Route::middleware(["auth", "roles:admin"])->group(function () {

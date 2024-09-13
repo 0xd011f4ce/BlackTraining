@@ -26,7 +26,7 @@
 
         <a href="{{ route('home.index') }}">Home</a>
         <a href="{{ route('courses.index') }}">Courses</a>
-        <a href="#">Images</a>
+        <a href="{{ route('boards.index') }}">Boards</a>
         <a href="#">Forum</a>
 
         @php
