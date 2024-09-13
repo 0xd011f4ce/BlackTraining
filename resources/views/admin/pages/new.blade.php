@@ -8,13 +8,7 @@
     <form action="#" method="POST">
         @csrf
 
-        @if (session('success'))
-            <p class="success">{{ session('success') }}</p>
-        @endif
-
-        @if (session('error'))
-            <p class="error">{{ session('error') }}</p>
-        @endif
+        @include('layouts.includes.success_error')
 
         <div>
             <label for="name">Name</label>

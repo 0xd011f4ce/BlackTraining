@@ -6,13 +6,7 @@
     <a href="{{ route('admin.pages.show') }}">&leftarrow; Back to pages</a>
     <h1>Edit Page: {{ $page->name }}</h1>
 
-    @if (session('success'))
-        <p class="success">{{ session('success') }}</p>
-    @endif
-
-    @if (session('error'))
-        <p class="error">{{ session('error') }}</p>
-    @endif
+    @include('layouts.includes.success_error')
 
     <form action="{{ route('admin.page.update', ['page' => $page]) }}" method="POST">
         @csrf

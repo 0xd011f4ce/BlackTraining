@@ -7,13 +7,7 @@
 
     <h1>Edit Course: {{ $course->name }}</h1>
 
-    @if (session('success'))
-        <p class="success">{{ session('success') }}</p>
-    @endif
-
-    @if (session('error'))
-        <p class="error">{{ session('error') }}</p>
-    @endif
+    @include('layouts.includes.success_error')
 
     <form action="{{ route('admin.course.update', ['course' => $course]) }}" method="POST">
         @csrf

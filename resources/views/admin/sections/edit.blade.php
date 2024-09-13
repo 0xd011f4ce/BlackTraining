@@ -7,13 +7,7 @@
 
     <h1>Edit Section: {{ $course_section->name }}</h1>
 
-    @if (session('success'))
-        <p class="success">{{ session('success') }}</p>
-    @endif
-
-    @if (session('error'))
-        <p class="error">{{ session('error') }}</p>
-    @endif
+    @include('layouts.includes.success_error')
 
     <form method="POST">
         @csrf

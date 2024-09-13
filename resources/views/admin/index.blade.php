@@ -5,9 +5,7 @@
 @section('content')
     <h1>Admin Dashboard</h1>
 
-    @if (session('success'))
-        <p class="success">{{ session('success') }}</p>
-    @endif
+    @include('layouts.includes.success_error')
 
     <h2>Courses</h2>
     <a href="{{ route('admin.courses.new.index') }}">Create new course</a><br>
