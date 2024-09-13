@@ -37,7 +37,7 @@ class AdminPageController extends Controller
         $page->content = $request->content;
         $page->save();
 
-        return back()->with("success", "Page created successfully.");
+        return redirect(route(("admin.index")))->with("success", "Page created successfully.");
     }
 
     public function show()

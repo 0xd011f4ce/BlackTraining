@@ -21,7 +21,7 @@
     <a href="{{ route('admin.pages.show') }}">Manage pages</a>
 
     <h2>Image Boards</h2>
-    <a href="#">Create new Board</a><br>
+    <a href="{{ route('admin.boards.new.index') }}">Create new Board</a><br>
     <a href="#">Manage Boards</a>
 
     <br>

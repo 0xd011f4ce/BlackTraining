@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\AdminCoursecontroller;
+use App\Http\Controllers\AdminImageBoardController;
 use App\Http\Controllers\AdminLessonController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\AdminSectionController;
@@ -62,4 +63,8 @@ Route::middleware(["auth", "roles:admin"])->group(function () {
 
     Route::get("/admin/page/{page:slug}", [AdminPageController::class, "edit"])->name("admin.page.edit");
     Route::post("/admin/page/{page:slug}", [AdminPageController::class, "update"])->name("admin.page.update");
+
+    // image board
+    Route::post("/admin/boards/new", [AdminImageBoardController::class, "store"])->name("admin.boards.new.store");
+    Route::get("/admin/boards/new", [AdminImageBoardController::class, "index"])->name("admin.boards.new.index");
 });
