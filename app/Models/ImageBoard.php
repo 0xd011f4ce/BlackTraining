@@ -14,4 +14,9 @@ class ImageBoard extends Model
         'identifier',
         'description',
     ];
+
+    public function imageBoardPosts()
+    {
+        return $this->hasMany(ImageBoardPost::class);
+    }
 }

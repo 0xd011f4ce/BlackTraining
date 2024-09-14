@@ -18,3 +18,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+public/uploads/boards/*.jpg
+public/uploads/boards/*.jpeg
+public/uploads/boards/*.png
+public/uploads/boards/*.gif
+public/uploads/boards/*.svg
+public/uploads/boards/*.webp

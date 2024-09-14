@@ -38,6 +38,7 @@ Route::get("/course/{course:slug}/lesson/{lesson:slug}", [CourseController::clas
 // imade boards
 Route::get("/boards", [ImageBoardController::class, "index"])->name("boards.index");
 Route::get("/boards/{board:identifier}", [ImageBoardController::class, "show"])->name("boards.show");
+Route::post("/boards/{board:identifier}", [ImageBoardController::class, "store"])->name("boards.show");
 
 // Admin routes
 Route::middleware(["auth", "roles:admin"])->group(function () {
