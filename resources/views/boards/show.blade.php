@@ -40,7 +40,7 @@
     <ul>
         @foreach ($posts as $post)
             <li>
-                <h3>{{ $post->title }}</h3>
+                <h3>{{ $post->title }} >> <span><a href="#">{{ $post->id }}</a></span></h3>
                 <p>{{ $post->body }}</p>
                 @if ($post->image)
                     <img src="{{ asset('uploads/boards/' . $post->image) }}" alt="{{ $post->title }}">
@@ -48,4 +48,6 @@
             </li>
         @endforeach
     </ul>
+
+    {{ $posts->links() }}
 @endsection

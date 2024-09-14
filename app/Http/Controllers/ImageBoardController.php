@@ -19,7 +19,7 @@ class ImageBoardController extends Controller
 
     public function show(ImageBoard $board)
     {
-        $posts = $board->imageBoardPosts()->latest()->paginate(10);
+        $posts = $board->imageBoardPosts()->latest()->simplePaginate(10);
 
         return view("boards.show", compact("board", "posts"));
     }

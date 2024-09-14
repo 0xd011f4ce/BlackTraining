@@ -14,7 +14,6 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ImageBoardController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PageController;
-use App\Models\Course;
 
 Route::get("/", function () {
     return view("home");
