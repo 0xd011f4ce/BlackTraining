@@ -40,7 +40,9 @@
     <ul>
         @foreach ($posts as $post)
             <li>
-                <h3>{{ $post->title }} >> <span><a href="#">{{ $post->id }}</a></span></h3>
+                <h3>{{ $post->title }} >> <span><a
+                            href="{{ route('boards.thread', ['board' => $board, 'image_board_post' => $post]) }}">{{ $post->id }}</a></span>
+                </h3>
                 <p>{{ $post->body }}</p>
                 @if ($post->image)
                     <img src="{{ asset('uploads/boards/' . $post->image) }}" alt="{{ $post->title }}">

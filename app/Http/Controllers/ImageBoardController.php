@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ImageBoard;
-
+use App\Models\ImageBoardPost;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\Laravel\Facades\Image;
@@ -50,5 +50,13 @@ class ImageBoardController extends Controller
         ]);
 
         return back();
+    }
+
+    public function thread(ImageBoard $board, ImageBoardPost $imageBoardPost)
+    {
+        return view("boards.thread", [
+            "board" => $board,
+            "post" => $imageBoardPost
+        ]);
     }
 }
