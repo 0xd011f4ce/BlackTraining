@@ -37,7 +37,7 @@ Route::get("/course/{course:slug}/lesson/{lesson:slug}", [CourseController::clas
 // imade boards
 Route::get("/boards", [ImageBoardController::class, "index"])->name("boards.index");
 Route::get("/boards/{board:identifier}", [ImageBoardController::class, "show"])->name("boards.show");
-Route::post("/boards/{board:identifier}", [ImageBoardController::class, "store"])->middleware("auth")->name("boards.show");
+Route::post("/boards/{board:identifier}", [ImageBoardController::class, "store"])->middleware("auth")->name("boards.store");
 Route::get("/boards/{board:identifier}/thread/{image_board_post:slug}", [ImageBoardController::class, "thread"])->name("boards.thread");
 
 // Admin routes
