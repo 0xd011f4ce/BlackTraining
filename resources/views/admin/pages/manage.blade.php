@@ -5,6 +5,8 @@
 @section('content')
     <h1>Manage Pages</h1>
 
+    @include('layouts.includes.success_error')
+
     <ul>
         @foreach ($pages as $page)
             <li>

@@ -5,6 +5,8 @@
 @section('content')
     <h1>Manage Courses</h1>
 
+    @include('layouts.includes.success_error')
+
     <ul>
         @foreach ($courses as $course)
             <li>

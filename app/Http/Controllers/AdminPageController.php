@@ -72,4 +72,10 @@ class AdminPageController extends Controller
 
         return back()->with("success", "Page updated successfully.");
     }
+
+    public function delete(Page $page)
+    {
+        $page->delete();
+        return redirect(route('admin.pages.show'))->with("success", "Page deleted successfully.");
+    }
 }

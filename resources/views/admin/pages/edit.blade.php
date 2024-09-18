@@ -44,4 +44,11 @@
 
         <button type="submit">Update Page</button>
     </form>
+
+    <form action="#" method="POST" style="margin-top: 6px">
+        @csrf
+        @method('delete')
+
+        <button type="submit">Delete Page</button>
+    </form>
 @endsection

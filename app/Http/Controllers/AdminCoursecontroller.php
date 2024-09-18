@@ -72,4 +72,10 @@ class AdminCoursecontroller extends Controller
 
         return redirect()->route("admin.course.edit", ["course" => $course->slug])->with("success", "Course updated successfully.");
     }
+
+    public function delete(Course $course)
+    {
+        $course->delete();
+        return redirect()->route("admin.courses.show")->with("success", "Course deleted successfully.");
+    }
 }

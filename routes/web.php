@@ -51,6 +51,7 @@ Route::middleware(["auth", "roles:admin"])->group(function () {
 
     Route::get("/admin/course/{course:slug}", [AdminCoursecontroller::class, "edit"])->name("admin.course.edit");
     Route::patch("/admin/course/{course:slug}", [AdminCoursecontroller::class, "update"])->name("admin.course.update");
+    Route::delete("/admin/course/{course:slug}", [AdminCoursecontroller::class, "delete"])->name("admin.course.delete");
 
     Route::post("/admin/course/{course:slug}/sections/add", [AdminSectionController::class, "store"])->name("admin.course.sections.store");
     Route::get("/admin/course/{course:slug}/section/{course_section:slug}", [AdminSectionController::class, "edit"])->name("admin.course.sections.edit");
@@ -69,6 +70,7 @@ Route::middleware(["auth", "roles:admin"])->group(function () {
 
     Route::get("/admin/page/{page:slug}", [AdminPageController::class, "edit"])->name("admin.page.edit");
     Route::patch("/admin/page/{page:slug}", [AdminPageController::class, "update"])->name("admin.page.update");
+    Route::delete("/admin/page/{page:slug}", [AdminPageController::class, "delete"])->name("admin.page.delete");
 
     // image board
     Route::post("/admin/boards/new", [AdminImageBoardController::class, "store"])->name("admin.boards.new.store");

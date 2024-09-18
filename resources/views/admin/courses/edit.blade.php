@@ -44,6 +44,13 @@
         <button type="submit" name="submit">Update Information</button>
     </form>
 
+    <form action="#" method="POST" style="margin-top: 6px">
+        @csrf
+        @method('delete')
+
+        <button type="submit">Delete Course</button>
+    </form>
+
     <h2>Sections</h2>
 
     <ul>
