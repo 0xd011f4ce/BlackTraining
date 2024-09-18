@@ -3,9 +3,9 @@
 @section('title', 'Courses')
 
 @section('content')
-    <h1>Courses</h1>
+    <h1>Cursos</h1>
 
-    <p>The following is a list of all the available courses:</p>
+    <p>La siguiente es una lista de cursos disponibles en BlackTraining:</p>
 
     <ul>
         @foreach ($courses as $course)

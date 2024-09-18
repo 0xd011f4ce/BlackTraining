@@ -7,12 +7,12 @@
     <p>{{ $board->description }}</p>
 
     @auth
-        <h2>Create a post</h2>
+        <h2>Crea un post</h2>
         <form action="#" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div>
-                <label for="title">Title</label>
+                <label for="title">Título</label>
                 <input type="text" name="title" id="title" value="{{ old('title') }}">
                 @error('title')
                     <p class="error">{{ $message }}</p>
@@ -20,7 +20,7 @@
             </div>
 
             <div>
-                <label for="body">Body</label>
+                <label for="body">Contenido</label>
                 <textarea name="body" id="body" rows="5">{{ old('body') }}</textarea>
                 @error('body')
                     <p class="error">{{ $message }}</p>
@@ -28,11 +28,11 @@
             </div>
 
             <div>
-                <label for="image">Image</label>
+                <label for="image">Imagen</label>
                 <input type="file" name="image" id="image">
             </div>
 
-            <button type="submit">Create Post</button>
+            <button type="submit">Crear Post</button>
         </form>
     @endauth
 

@@ -9,13 +9,13 @@
     <p>{{ $post->body }}</p>
     <img src="{{ asset('/uploads/boards/' . $post->image) }}" alt="">
 
-    <h3>Discussion</h3>
+    <h3>Discusión</h3>
 
     <form action="#" method="POST">
         @csrf
 
         <div>
-            <label for="title">Title</label>
+            <label for="title">Título</label>
             <input type="text" name="title" id="title" value="{{ old('title') }}">
             @error('title')
                 <p class="error">{{ $message }}</p>
@@ -23,7 +23,7 @@
         </div>
 
         <div>
-            <label for="body">Body</label>
+            <label for="body">Contenido</label>
             <textarea name="body" id="body" rows="5">{{ old('body') }}</textarea>
             @error('body')
                 <p class="error">{{ $message }}</p>

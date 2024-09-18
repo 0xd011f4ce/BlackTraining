@@ -5,15 +5,15 @@
 @section('content')
     @auth
         @if (Auth::user()->role === 'admin')
-            <a href="{{ route('admin.course.edit', ['course' => $course]) }}">Edit course</a>
+            <a href="{{ route('admin.course.edit', ['course' => $course]) }}">Editar curso</a>
         @endif
     @endauth
 
     <h1>{{ $course->name }}</h1>
-    <p>Lessons: {{ count($course->lessons) }}</p>
-    <p>Last updated: {{ $course->updated_at->diffForHumans() }}</p>
+    <p>Lecciones: {{ count($course->lessons) }}</p>
+    <p>Última actualización: {{ $course->updated_at->diffForHumans() }}</p>
 
-    <h2>Lessons:</h2>
+    <h2>Lecciones:</h2>
 
     @foreach ($course->courseSections as $section)
         <h3>{{ $section->name }}</h3>

@@ -24,10 +24,10 @@
         <span id="a">black@training</span>:<span id="b">~/page</span><span id="c">$</span>
         ls<br>
 
-        <a href="{{ route('home.index') }}">Home</a>
-        <a href="{{ route('courses.index') }}">Courses</a>
+        <a href="{{ route('home.index') }}">Inicio</a>
+        <a href="{{ route('courses.index') }}">Cursos</a>
         <a href="{{ route('boards.index') }}">Boards</a>
-        <a href="#">Forum</a>
+        <a href="#">Foro</a>
 
         @php
             $pages = App\Models\Page::where('in_header', true)->get();
@@ -43,10 +43,10 @@
             @if ($isadmin)
                 <a href="{{ route('admin.index') }}">Admin</a>
             @endif
-            <a href="{{ route('logout.index') }}">Logout</a>
+            <a href="{{ route('logout.index') }}">Cerrar sesión</a>
         @else
-            <a href="{{ route('login.index') }}">Login</a>
-            <a href="{{ route('signup.index') }}">Sign Up</a>
+            <a href="{{ route('login.index') }}">'Iniciar sesión'</a>
+            <a href="{{ route('signup.index') }}">'Crear Cuenta'</a>
         @endauth
 
         <br>
