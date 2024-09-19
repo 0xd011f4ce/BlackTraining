@@ -39,6 +39,7 @@ Route::get("/boards", [ImageBoardController::class, "index"])->name("boards.inde
 Route::get("/boards/{board:identifier}", [ImageBoardController::class, "show"])->name("boards.show");
 Route::post("/boards/{board:identifier}", [ImageBoardController::class, "store"])->middleware("auth")->name("boards.store");
 Route::get("/boards/{board:identifier}/thread/{image_board_post:slug}", [ImageBoardController::class, "thread"])->name("boards.thread");
+Route::post("/boards/{board:identifier}/thread/{image_board_post:slug}", [ImageBoardController::class, "reply"])->middleware("auth")->name("boards.reply");
 
 // Admin routes
 Route::middleware(["auth", "roles:admin"])->group(function () {

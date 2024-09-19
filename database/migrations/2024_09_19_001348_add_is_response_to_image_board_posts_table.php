@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('image_boards', function (Blueprint $table) {
+        Schema::table('image_board_posts', function (Blueprint $table) {
             $table->boolean('is_response')->default(false);
-            $table->foreignId('response_to')->nullable()->constrained('image_boards');
+            $table->foreignId('response_to')->nullable()->constrained('image_board_posts');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('image_boards', function (Blueprint $table) {
+        Schema::table('image_board_posts', function (Blueprint $table) {
             $table->dropColumn('is_response');
             $table->dropForeign(['response_to']);
             $table->dropColumn('response_to');

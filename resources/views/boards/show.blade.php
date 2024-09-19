@@ -40,24 +40,26 @@
     <h2>Posts</h2>
     <ul>
         @foreach ($posts as $post)
-            <li>
-                <h3><a href="#">{{ $post->user->name }}</a>
+            @if (!$post->is_response)
+                <li>
+                    <h3><a href="#">{{ $post->user->name }}</a>
 
-                    @if ($post->user->is_admin())
-                        <sup>admin</sup>
+                        @if ($post->user->is_admin())
+                            <sup>admin</sup>
+                        @endif
+
+                        >> {{ $post->title }} >>
+                        <span>
+                            <a href="{{ route('boards.thread', ['board' => $board, 'image_board_post' => $post]) }}">{{ $post->id }}
+                                view thread</a>
+                        </span>
+                    </h3>
+                    <p>{{ $post->body }}</p>
+                    @if ($post->image)
+                        <img src="{{ asset('uploads/boards/' . $post->image) }}" alt="{{ $post->title }}" width="240">
                     @endif
-
-                    >> {{ $post->title }} >>
-                    <span>
-                        <a
-                            href="{{ route('boards.thread', ['board' => $board, 'image_board_post' => $post]) }}">{{ $post->id }}</a>
-                    </span>
-                </h3>
-                <p>{{ $post->body }}</p>
-                @if ($post->image)
-                    <img src="{{ asset('uploads/boards/' . $post->image) }}" alt="{{ $post->title }}">
-                @endif
-            </li>
+                </li>
+            @endif
         @endforeach
     </ul>
 

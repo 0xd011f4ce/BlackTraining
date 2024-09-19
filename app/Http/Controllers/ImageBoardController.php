@@ -38,7 +38,7 @@ class ImageBoardController extends Controller
         $imagePath = public_path("uploads/boards") . "/" . $image_name;
         $imageServer->save($imagePath);
 
-        $slug = Str::slug($request->title);
+        $slug = Str::slug($request->title . "-" . time());
 
         $board->imageBoardPosts()->create([
             "title" => $request->title,
@@ -58,5 +58,27 @@ class ImageBoardController extends Controller
             "board" => $board,
             "post" => $imageBoardPost
         ]);
+    }
+
+    public function reply(ImageBoard $board, ImageBoardPost $imageBoardPost, Request $request)
+    {
+        $request->validate([
+            "title" => "required|string",
+            "body" => "required|string"
+        ]);
+
+        $slug = Str::slug($request->title . "-" . time());
+
+        $reply = $imageBoardPost->responses()->create([
+            "title" => $request->title,
+            "slug" => $slug,
+            "body" => $request->body,
+            "user_id" => auth()->id(),
+            "image_board_id" => $board->id,
+            "is_response" => true,
+            "response_to" => $imageBoardPost->id
+        ]);
+
+        return back();
     }
 }

@@ -29,4 +29,9 @@ class ImageBoardPost extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function responses()
+    {
+        return $this->hasMany(ImageBoardPost::class, "response_to");
+    }
 }

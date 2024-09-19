@@ -18,7 +18,21 @@
 
     <h3>Discusión</h3>
 
-    <form action="#" method="POST">
+    @foreach ($post->responses as $response)
+        <h4>
+            <a href="#">
+                {{ $response->user->name }}
+            </a>
+            @if ($response->user->is_admin())
+                <sup>admin</sup>
+            @endif
+            >>
+            {{ $response->title }}
+        </h4>
+        <p>{{ $response->body }}</p>
+    @endforeach
+
+    <form action="{{ route('boards.reply', ['board' => $board, 'image_board_post' => $post]) }}" method="POST">
         @csrf
 
         <div>
