@@ -20,10 +20,8 @@ BlackTraining is an LMS platform made in Laravel, with forum, and image board, t
 -   [x] ImageBoard
     -   [x] ImageBoard post
         -   [ ] ImageBoard post editing by admin
-        -   [ ] ImageBoard post editing by user
         -   [ ] ImageBoard post deletion by admin
-        -   [ ] ImageBoard post deletion by user
-    -   [ ] ImageBoard reply
+    -   [x] ImageBoard reply
     -   [x] User shown in image board post
     -   [ ] ImageBoard profile
 -   [ ] Forum
