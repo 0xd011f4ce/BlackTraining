@@ -32,25 +32,27 @@
         <p>{{ $response->body }}</p>
     @endforeach
 
-    <form action="{{ route('boards.reply', ['board' => $board, 'image_board_post' => $post]) }}" method="POST">
-        @csrf
+    @auth
+        <form action="{{ route('boards.reply', ['board' => $board, 'image_board_post' => $post]) }}" method="POST">
+            @csrf
 
-        <div>
-            <label for="title">Título</label>
-            <input type="text" name="title" id="title" value="{{ old('title') }}">
-            @error('title')
-                <p class="error">{{ $message }}</p>
-            @enderror
-        </div>
+            <div>
+                <label for="title">Título</label>
+                <input type="text" name="title" id="title" value="{{ old('title') }}">
+                @error('title')
+                    <p class="error">{{ $message }}</p>
+                @enderror
+            </div>
 
-        <div>
-            <label for="body">Contenido</label>
-            <textarea name="body" id="body" rows="5">{{ old('body') }}</textarea>
-            @error('body')
-                <p class="error">{{ $message }}</p>
-            @enderror
-        </div>
+            <div>
+                <label for="body">Contenido</label>
+                <textarea name="body" id="body" rows="5">{{ old('body') }}</textarea>
+                @error('body')
+                    <p class="error">{{ $message }}</p>
+                @enderror
+            </div>
 
-        <button type="submit">Submit Reply</button>
-    </form>
+            <button type="submit">Submit Reply</button>
+        </form>
+    @endauth
 @endsection
