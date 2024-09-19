@@ -3,7 +3,8 @@
 @section('title', $board->name)
 
 @section('content')
-    <h1>{{ $board->name }}</h1>
+    <h1>
+        {{ $board->name }}</h1>
     <p>{{ $board->description }}</p>
 
     @auth
@@ -40,8 +41,17 @@
     <ul>
         @foreach ($posts as $post)
             <li>
-                <h3>{{ $post->title }} >> <span><a
-                            href="{{ route('boards.thread', ['board' => $board, 'image_board_post' => $post]) }}">{{ $post->id }}</a></span>
+                <h3><a href="#">{{ $post->user->name }}</a>
+
+                    @if ($post->user->is_admin())
+                        <sup>admin</sup>
+                    @endif
+
+                    >> {{ $post->title }} >>
+                    <span>
+                        <a
+                            href="{{ route('boards.thread', ['board' => $board, 'image_board_post' => $post]) }}">{{ $post->id }}</a>
+                    </span>
                 </h3>
                 <p>{{ $post->body }}</p>
                 @if ($post->image)

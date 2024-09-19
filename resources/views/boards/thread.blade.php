@@ -5,7 +5,14 @@
 @section('content')
     <a href="{{ route('boards.show', ['board' => $board]) }}">&leftarrow; Back to {{ $board->name }}</a>
 
-    <h2>{{ $post->title }}</h2>
+    <h2>
+        <a href="#">{{ $post->user->name }}</a>
+        @if ($post->user->is_admin())
+            <sup>admin</sup>
+        @endif
+        >>
+        {{ $post->title }}
+    </h2>
     <p>{{ $post->body }}</p>
     <img src="{{ asset('/uploads/boards/' . $post->image) }}" alt="">
 

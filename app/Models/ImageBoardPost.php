@@ -17,4 +17,14 @@ class ImageBoardPost extends Model
         "image",
         "slug",
     ];
+
+    public function imageBoard()
+    {
+        return $this->belongsTo(ImageBoard::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
