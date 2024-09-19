@@ -16,6 +16,8 @@ class ImageBoardPost extends Model
         "body",
         "image",
         "slug",
+        "is_response",
+        "response_to"
     ];
 
     public function imageBoard()
