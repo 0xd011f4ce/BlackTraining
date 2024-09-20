@@ -6,11 +6,13 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\AdminCoursecontroller;
+use App\Http\Controllers\AdminForumController;
 use App\Http\Controllers\AdminImageBoardController;
 use App\Http\Controllers\AdminLessonController;
 use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\AdminSectionController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ImageBoardController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PageController;
@@ -40,6 +42,9 @@ Route::get("/boards/{board:identifier}", [ImageBoardController::class, "show"])-
 Route::post("/boards/{board:identifier}", [ImageBoardController::class, "store"])->middleware("auth")->name("boards.store");
 Route::get("/boards/{board:identifier}/thread/{image_board_post:slug}", [ImageBoardController::class, "thread"])->name("boards.thread");
 Route::post("/boards/{board:identifier}/thread/{image_board_post:slug}", [ImageBoardController::class, "reply"])->middleware("auth")->name("boards.reply");
+
+// forum
+Route::get("/forum", [ForumController::class, "index"])->name("forum.index");
 
 // Admin routes
 Route::middleware(["auth", "roles:admin"])->group(function () {
@@ -81,4 +86,8 @@ Route::middleware(["auth", "roles:admin"])->group(function () {
     Route::get("/admin/board/{board:identifier}", [AdminImageBoardController::class, "edit"])->name("admin.board.edit");
     Route::patch("/admin/board/{board:identifier}", [AdminImageBoardController::class, "update"])->name("admin.board.update");
     Route::delete("/admin/board/{board:identifier}", [AdminImageBoardController::class, "delete"])->name("admin.board.delete");
+
+    // forum
+    Route::get("/admin/forum/new", [AdminForumController::class, "index"])->name("admin.forums.new.index");
+    Route::post("/admin/forum/new", [AdminForumController::class, "store"])->name("admin.forums.new.store");
 });

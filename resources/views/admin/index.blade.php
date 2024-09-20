@@ -19,5 +19,8 @@
     <a href="{{ route('admin.boards.new.index') }}">Create new Board</a><br>
     <a href="{{ route('admin.boards.show') }}">Manage Boards</a>
 
+    <h2>Forums</h2>
+    <a href="{{ route('admin.forums.new.index') }}">Create new Forum</a>
+
     <br>
 @endsection

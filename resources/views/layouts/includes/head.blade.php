@@ -27,7 +27,7 @@
         <a href="{{ route('home.index') }}">Inicio</a>
         <a href="{{ route('courses.index') }}">Cursos</a>
         <a href="{{ route('boards.index') }}">Boards</a>
-        <a href="#">Foro</a>
+        <a href="{{ route('forum.index') }}">Foro</a>
 
         @php
             $pages = App\Models\Page::where('in_header', true)->get();
