@@ -56,6 +56,7 @@ class ForumController extends Controller
         ]);
 
         $forum_category->topics += 1;
+        $forum_category->posts += 1;
         $forum_category->save();
 
         return redirect()->route("forum.show", $forum_category->slug);
@@ -91,6 +92,9 @@ class ForumController extends Controller
 
         $forum_post->replies += 1;
         $forum_post->save();
+
+        $forum_category->posts += 1;
+        $forum_category->save();
 
         return redirect()->route("forum.thread", [$forum_category->slug, $forum_post->slug]);
     }
