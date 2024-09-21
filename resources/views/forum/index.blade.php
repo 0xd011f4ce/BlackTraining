@@ -38,7 +38,8 @@
                             <table width="100%" cellspacing="0" cellpadding="5" style="border: none">
                                 <tr>
                                     <td style="border: 0">
-                                        <a href="#"><strong>{{ $child->name }}</strong></a>
+                                        <a
+                                            href="{{ route('forum.show', ['forum_category' => $child]) }}"><strong>{{ $child->name }}</strong></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -53,8 +54,12 @@
                         <td align="center">{{ $child->posts }}</td>
 
                         <td>
-                            <strong>TODO:</strong>
-                            <em>Last post</em>
+                            @if ($child->lastPost)
+                                <strong>
+                                    <a href="#">{{ $child->lastPost->name }}</a>
+                                </strong><br>
+                                <em>Por: {{ $child->lastPost->user->name }}</em><br>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

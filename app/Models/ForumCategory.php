@@ -23,4 +23,9 @@ class ForumCategory extends Model
     {
         return $this->hasMany(ForumCategory::class, "parent_id");
     }
+
+    public function lastPost()
+    {
+        return $this->hasOne(ForumPost::class, "forum_category_id")->latest();
+    }
 }

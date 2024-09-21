@@ -1,0 +1,44 @@
+@extends('layouts.app')
+
+@section('title', $forum->name)
+
+@section('content')
+    <table border="1" cellpadding="10" cellspacing="0" width="100%">
+
+        <tr>
+            <td colspan="5" align="center">
+                <strong>Categoría: {{ $forum->name }}</strong><br>
+                <em>{{ $forum->description }}</em><br>
+                <a href="{{ route('forum.post', ['forum_category' => $forum]) }}">Nuevo Post</a>
+            </td>
+        </tr>
+
+        <tr>
+            <th width="50%">Título</th>
+            <th width="15%">Autor</th>
+            <th width="10%">Respuestas</th>
+            <th width="10%">Visitas</th>
+            <th width="15%">Último post</th>
+        </tr>
+
+        @foreach ($posts as $post)
+            <tr>
+                <td>
+                    <a href="#">{{ $post->name }}</a><br>
+                    <em>Posteado en: {{ $post->created_at->format('d/m/Y') }}</em>
+                </td>
+
+                <td align="center">{{ $post->user->name }}</td>
+
+                <td align="center">{{ $post->replies }}</td>
+
+                <td align="center">{{ $post->views }}</td>
+
+                <td>
+                    <strong>TODO:</strong> Último post
+                </td>
+            </tr>
+        @endforeach
+
+    </table>
+@endsection
