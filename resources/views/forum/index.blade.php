@@ -56,7 +56,8 @@
                         <td>
                             @if ($child->lastPost)
                                 <strong>
-                                    <a href="#">{{ $child->lastPost->name }}</a>
+                                    <a
+                                        href="{{ route('forum.thread', ['forum_category' => $child, 'forum_post' => $child->lastPost]) }}">{{ $child->lastPost->name }}</a>
                                 </strong><br>
                                 <em>Por: {{ $child->lastPost->user->name }}</em><br>
                             @endif

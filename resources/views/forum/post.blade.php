@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Post at' . $forum->name)
+@section('title', 'Post at ' . $forum->name)
 
 @section('content')
     <table border="1" cellpadding="10" cellspacing="0" width="100%">

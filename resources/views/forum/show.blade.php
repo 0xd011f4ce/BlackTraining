@@ -27,7 +27,8 @@
         @foreach ($posts as $post)
             <tr>
                 <td>
-                    <a href="#">{{ $post->name }}</a><br>
+                    <a
+                        href="{{ route('forum.thread', ['forum_category' => $forum, 'forum_post' => $post]) }}">{{ $post->name }}</a><br>
                     <em>Posteado en: {{ $post->created_at->format('d/m/Y') }}</em>
                 </td>
 
@@ -38,7 +39,9 @@
                 <td align="center">{{ $post->views }}</td>
 
                 <td>
-                    <strong>TODO:</strong> Último post
+                    @if ($post->lastReply)
+                        <strong>Hecho por: </strong> {{ $post->lastReply->user->name }}<br>
+                    @endif
                 </td>
             </tr>
         @endforeach

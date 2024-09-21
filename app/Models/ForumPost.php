@@ -18,6 +18,8 @@ class ForumPost extends Model
         "views",
         "is_locked",
         "is_pinned",
+        "is_reply",
+        "reply_to",
         "user_id",
         "forum_category_id",
     ];
@@ -30,5 +32,15 @@ class ForumPost extends Model
     public function forumCategory()
     {
         return $this->belongsTo(ForumCategory::class, "forum_category_id");
+    }
+
+    public function postReplies()
+    {
+        return $this->hasMany(ForumPost::class, "reply_to");
+    }
+
+    public function lastReply()
+    {
+        return $this->hasOne(ForumPost::class, "reply_to")->latest();
     }
 }

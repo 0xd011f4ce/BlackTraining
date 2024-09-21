@@ -18,7 +18,10 @@ class ForumController extends Controller
 
     public function show(ForumCategory $forum_category)
     {
-        $posts = ForumPost::where("forum_category_id", $forum_category->id)->simplePaginate(25);
+        $posts = ForumPost::where([
+            ["forum_category_id", "=", $forum_category->id],
+            ["is_reply", "=", false]
+        ])->simplePaginate(25);
         $posts->appends(["sort" => "created_at"]);
 
         return view("forum.show", [
@@ -56,5 +59,39 @@ class ForumController extends Controller
         $forum_category->save();
 
         return redirect()->route("forum.show", $forum_category->slug);
+    }
+
+    public function thread(ForumCategory $forum_category, ForumPost $forum_post)
+    {
+        $forum_post->views++;
+        $forum_post->save();
+
+        return view("forum.thread", [
+            "forum" => $forum_category,
+            "thread" => $forum_post
+        ]);
+    }
+
+    public function reply(ForumCategory $forum_category, ForumPost $forum_post, Request $request)
+    {
+        $request->validate([
+            "reply" => "required"
+        ]);
+
+        ForumPost::create([
+            "name" => "Re: " . $forum_post->name,
+            "slug" => $forum_post->slug . "-" . time(),
+            "content" => $request->reply,
+            "tags" => $request->tags ?? "",
+            "user_id" => auth()->id(),
+            "forum_category_id" => $forum_category->id,
+            "is_reply" => true,
+            "reply_to" => $forum_post->id
+        ]);
+
+        $forum_post->replies += 1;
+        $forum_post->save();
+
+        return redirect()->route("forum.thread", [$forum_category->slug, $forum_post->slug]);
     }
 }
