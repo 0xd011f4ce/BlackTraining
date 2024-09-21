@@ -9,7 +9,10 @@
             <td colspan="5" align="center">
                 <strong>Categoría: {{ $forum->name }}</strong><br>
                 <em>{{ $forum->description }}</em><br>
-                <a href="{{ route('forum.post', ['forum_category' => $forum]) }}">Nuevo Post</a>
+
+                @auth
+                    <a href="{{ route('forum.post', ['forum_category' => $forum]) }}">Nuevo Post</a>
+                @endauth
             </td>
         </tr>
 
