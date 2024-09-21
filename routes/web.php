@@ -46,7 +46,7 @@ Route::post("/boards/{board:identifier}/thread/{image_board_post:slug}", [ImageB
 // forum
 Route::get("/forum", [ForumController::class, "index"])->name("forum.index");
 Route::get("/forum/{forum_category:slug}", [ForumController::class, "show"])->name("forum.show");
-Route::get("/forum/{forum_category:slug}/create", [ForumController::class, "post"])->name("forum.post");
+Route::get("/forum/{forum_category:slug}/create", [ForumController::class, "post"])->name("forum.post")->middleware("auth");
 Route::post("/forum/{forum_category:slug}/create", [ForumController::class, "store"])->name("forum.store")->middleware("auth");
 
 // Admin routes
