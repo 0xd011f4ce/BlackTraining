@@ -39,6 +39,15 @@
             <td width="80%" valign="top">
                 <strong>Posteado en: {{ $thread->created_at->format('d/m/Y') }}</strong><br><br>
                 {!! nl2br(e($thread->content)) !!}
+
+                @auth
+                    @if (auth()->id() === $thread->user_id)
+                        <br>
+                        <a
+                            href="{{ route('forum.edit', ['forum_category' => $thread->forumCategory, 'forum_post' => $thread]) }}">Editar
+                            Post</a>
+                    @endif
+                @endauth
             </td>
         </tr>
 

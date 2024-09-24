@@ -98,4 +98,37 @@ class ForumController extends Controller
 
         return redirect()->route("forum.thread", [$forum_category->slug, $forum_post->slug]);
     }
+
+    public function edit(ForumCategory $forum_category, ForumPost $forum_post)
+    {
+        // check if the logged in user is the owner of this thread
+        if ($forum_post->user_id !== auth()->id() || auth()->user()->role !== "admin") {
+            return redirect()->route("forum.thread", [$forum_category->slug, $forum_post->slug]);
+        }
+
+        return view("forum.edit", [
+            "forum" => $forum_category,
+            "post" => $forum_post
+        ]);
+    }
+
+    public function editStore(ForumCategory $forum_category, ForumPost $forum_post, Request $request)
+    {
+        // check if the logged in user is the owner of this thread
+        if ($forum_post->user_id !== auth()->id() || auth()->user()->role !== "admin") {
+            return redirect()->route("forum.thread", [$forum_category->slug, $forum_post->slug]);
+        }
+
+        $request->validate([
+            "title" => "required",
+            "content" => "required"
+        ]);
+
+        $forum_post->name = $request->title;
+        $forum_post->content = $request->content;
+        $forum_post->tags = $request->tags ?? "";
+        $forum_post->save();
+
+        return redirect()->route("forum.thread", [$forum_category->slug, $forum_post->slug]);
+    }
 }

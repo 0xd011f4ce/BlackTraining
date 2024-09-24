@@ -50,6 +50,8 @@ Route::get("/forum/{forum_category:slug}/create", [ForumController::class, "post
 Route::post("/forum/{forum_category:slug}/create", [ForumController::class, "store"])->name("forum.store")->middleware("auth");
 Route::get("/forum/{forum_category:slug}/{forum_post:slug}", [ForumController::class, "thread"])->name("forum.thread");
 Route::post("/forum/{forum_category:slug}/{forum_post:slug}", [ForumController::class, "reply"])->name("forum.reply");
+Route::get("/forum/{forum_category:slug}/{forum_post:slug}/edit", [ForumController::class, "edit"])->name("forum.edit")->middleware("auth");
+Route::post("/forum/{forum_category:slug}/{forum_post:slug}/edit", [ForumController::class, "editStore"])->name("forum.edit.store")->middleware("auth");
 
 // Admin routes
 Route::middleware(["auth", "roles:admin"])->group(function () {
