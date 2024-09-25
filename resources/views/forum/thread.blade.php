@@ -33,6 +33,12 @@
                         </td>
                     </tr>
 
+                    <tr>
+                        <td style="border: 0">
+                            <strong>Nivel:</strong> {{ $thread->user->level }}
+                        </td>
+                    </tr>
+
                 </table>
             </td>
 

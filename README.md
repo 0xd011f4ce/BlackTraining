@@ -10,7 +10,7 @@ BlackTraining is an LMS platform made in Laravel, with forum, and image board, t
     -   [x] Course lesson
     -   [ ] Course quiz
     -   [ ] Course assignment
-    -   [ ] Course gamification for forum badges
+    -   [-] Course gamification for forum badges
         -   [ ] Marking a lesson as complete gives XP
         -   [ ] Marking a course as complete gives XP
         -   [ ] Marking a quiz as complete gives XP
